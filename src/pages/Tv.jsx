@@ -4,10 +4,13 @@ import tvShows from "../components/tvShows.json";
 
 const Tv = () => {
   return (
-    <div>
-      <h1 className="text-3xl text-orange-500">My Tv Shows</h1>
-      {tvShows.map((showId) => (
-        <MediaType key={showId} mediaId={showId} mediaType="tv" />
+    <div className="bg-slate-500">
+      {tvShows.map((showId, i) => (
+        <div className="py-2" key={i}>
+          <div className="rounded-xl bg-slate-400 hover:cursor-pointer px-2 py-2 hover:bg-slate-300">
+            <MediaType key={showId} mediaId={showId} mediaType="tv" />
+          </div>
+        </div>
       ))}
     </div>
   );

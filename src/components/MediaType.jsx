@@ -24,6 +24,7 @@ function MediaType({ mediaId, mediaType }) {
         console.error(`Error fetching ${mediaType}:`, error);
       });
   }, [mediaId, mediaType]);
+  console.error(media);
 
   if (!media) return <div>Loading...</div>;
 

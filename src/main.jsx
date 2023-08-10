@@ -7,6 +7,7 @@ import "./index.css";
 import Dashboard from "./Dashboard.jsx";
 import Movies from "./pages/Movies";
 import Tv from "./pages/Tv";
+import DetailedView from "./components/DetailedView";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/tv",
     element: <Tv />,
+  },
+  {
+    path: "/:mediaType/:mediaId",
+    element: <DetailedView />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
