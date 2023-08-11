@@ -63,67 +63,92 @@ const DetailedView = () => {
   }, [media]);
 
   if (!media) return <div>Loading...</div>;
-  //refactor this
+
   const genreNames = media.genres.map((genre) => genre.name).join(", ");
 
   return (
-    <div className="bg-slate-500 h-screen">
-      <h1 className="text-4xl flex justify-center  py-2">
+    <div className="px-4 py-8 xl:h-screen">
+      <h1 className="text-3xl xl:text-4xl mb-2 text-center">
         {media.title || media.original_title || media.name}
       </h1>
-      <div className="flex justify-center">{media.tagline}</div>
-      <div className="xl:flex xl:items-center">
-        <img
-          src={`${img}/w300${media.poster_path}`}
-          className="rounded-xl px-2 ml- py-0 m-auto"
-          alt={media.title}
-        />
+      <div className="text-center mb-8">{media.tagline}</div>
 
-        <div className="flex">
-          {videoKey ? (
-            <iframe
-              className="absolute right-20 top-40"
-              width="560"
-              height="315"
-              src={`https://www.youtube.com/embed/${videoKey}`}
-              allowFullScreen
-            ></iframe>
-          ) : (
-            <p>Video is not available</p>
-          )}
+      <div className="flex flex-direction-switch flex-wrap justify-between mb-8 items-start">
+        <div className="w-full lg:w-[500px] mb-4 lg:mb-0">
+          <img
+            src={`${img}/w300${media.poster_path}`}
+            className="rounded-xl w-full"
+            alt={media.title}
+          />
+          <div className="hidden lg:block">
+            <h1 className="mt-8">
+              Release date:{" "}
+              {new Date(
+                media.release_date || media.first_air_date
+              ).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </h1>
+            {media.last_air_date && (
+              <h1>
+                Last Release date:{" "}
+                {new Date(media.last_air_date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </h1>
+            )}
+            <h1>Status: {media.status}</h1>
+          </div>
         </div>
 
-        <div className="flex text-center xl:text-left translate-y-60">
-          <p>{media.overview}</p>
+        <div className="w-full lg:w-[1300px]">
+          <div className="flex justify-center lg:justify-start w-full h-[450px] lg:h-[750px] mb-8 relative">
+            {videoKey ? (
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-xl"
+                src={`https://www.youtube.com/embed/${videoKey}`}
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <p className="self-center">Video is not available</p>
+            )}
+          </div>
+          <h1>Genre: {genreNames}</h1>
+          {media.budget && <h1>Budget: ${media.budget.toLocaleString()}</h1>}
+          <h1>Vote Average: {media.vote_average}</h1>
+
+          <div className="lg:hidden mt-4">
+            <h1>
+              Release date:{" "}
+              {new Date(
+                media.release_date || media.first_air_date
+              ).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </h1>
+            {media.last_air_date && (
+              <h1>
+                Last Release date:{" "}
+                {new Date(media.last_air_date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </h1>
+            )}
+            <h1>Status: {media.status}</h1>
+          </div>
         </div>
       </div>
-      <h1>
-        Release date:{" "}
-        {new Date(
-          media.release_date || media.first_air_date
-        ).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </h1>
-      {media.last_air_date && (
-        <h1>
-          Last Release date:{" "}
-          {new Date(media.last_air_date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </h1>
-      )}
 
-      <h1>Status: {media.status}</h1>
-      {media.budget && <h1>Budget: {media.budget.toLocaleString()}</h1>}
-      <h1>Vote Average: {media.vote_average}</h1>
-      <h1>Vote count: {media.vote_count}</h1>
       <div>
-        <h1>Genre: {genreNames}</h1>
+        <p>{media.overview}</p>
       </div>
     </div>
   );

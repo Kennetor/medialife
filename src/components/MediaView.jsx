@@ -17,8 +17,7 @@ const MediaView = ({ media, mediaType }) => {
         className="mr-4 rounded-lg"
       />
       <div>
-        <p className="text-3xl">{title}</p>
-        <p>{media.overview}</p>
+        <p className="text-2xl xl:text-3xl">{title}</p>
       </div>
     </div>
   );
