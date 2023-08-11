@@ -97,7 +97,27 @@ const DetailedView = () => {
           <p>{media.overview}</p>
         </div>
       </div>
-      <h1>Release date: {media.release_date}</h1>
+      <h1>
+        Release date:{" "}
+        {new Date(
+          media.release_date || media.first_air_date
+        ).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </h1>
+      {media.last_air_date && (
+        <h1>
+          Last Release date:{" "}
+          {new Date(media.last_air_date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </h1>
+      )}
+
       <h1>Status: {media.status}</h1>
       {media.budget && <h1>Budget: {media.budget.toLocaleString()}</h1>}
       <h1>Vote Average: {media.vote_average}</h1>
