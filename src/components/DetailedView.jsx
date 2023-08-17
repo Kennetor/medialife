@@ -66,6 +66,18 @@ const DetailedView = () => {
 
   const genreNames = media.genres.map((genre) => genre.name).join(", ");
 
+  let newEp =
+    media.next_episode_to_air && media.next_episode_to_air.name
+      ? media.next_episode_to_air.episode_number
+      : null;
+
+  let lastSeason = media.seasons
+    ? media.seasons[media.seasons.length - 1]
+    : null;
+  let airDate =
+    media.next_episode_to_air && media.next_episode_to_air.air_date
+      ? media.next_episode_to_air.air_date
+      : null;
   return (
     <div className="px-4 py-8 xl:h-screen">
       <h1 className="text-3xl xl:text-4xl mb-2 text-center">
@@ -79,9 +91,10 @@ const DetailedView = () => {
             src={`${img}/w300${media.poster_path}`}
             className="rounded-xl w-full"
             alt={media.title}
-          />
+          />{" "}
           <div className="hidden lg:block">
             <h1 className="mt-8">
+              <h1>Status: {media.status}</h1>
               Release date:{" "}
               {new Date(
                 media.release_date || media.first_air_date
@@ -101,7 +114,6 @@ const DetailedView = () => {
                 })}
               </h1>
             )}
-            <h1>Status: {media.status}</h1>
           </div>
         </div>
 
@@ -119,7 +131,19 @@ const DetailedView = () => {
           </div>
           <h1>Genre: {genreNames}</h1>
           {media.budget && <h1>Budget: ${media.budget.toLocaleString()}</h1>}
-          <h1>Vote Average: {media.vote_average}</h1>
+          <h1>Vote Average: {media.vote_average.toFixed(1)}</h1>
+          {newEp && media.status !== "Ended" && (
+            <h1>
+              Next Release:{" "}
+              {new Date(airDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}{" "}
+              - Season {lastSeason ? lastSeason.season_number : "Unknown"}{" "}
+              Episode {newEp} {""}
+            </h1>
+          )}
 
           <div className="lg:hidden mt-4">
             <h1>
