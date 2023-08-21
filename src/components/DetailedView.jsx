@@ -160,6 +160,7 @@ const NextRelease = ({ media }) => {
 
 const ReleaseDetails = ({ media }) => (
   <>
+    <h1>Status: {media.status}</h1>
     <h1>
       Release date:{" "}
       {new Date(media.release_date || media.first_air_date).toLocaleDateString(
@@ -177,7 +178,6 @@ const ReleaseDetails = ({ media }) => (
         })}
       </h1>
     )}
-    <h1>Status: {media.status}</h1>
   </>
 );
 
