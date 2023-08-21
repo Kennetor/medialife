@@ -7,32 +7,31 @@ function MediaType({ mediaId, mediaType }) {
   const [media, setMedia] = useState(null);
 
   useEffect(() => {
-    fetch(`${url}/${mediaType}/${mediaId}?api_key=${apiKey}`)
-      .then((response) => {
+    async function fetchMediaData() {
+      try {
+        const response = await fetch(
+          `${url}/${mediaType}/${mediaId}?api_key=${apiKey}`
+        );
+
         if (!response.ok) {
           throw new Error(
             `Failed to fetch ${mediaType}. Status: ${response.status}`
           );
         }
-        return response.json();
-      })
-      .then((data) => {
-        // console.log("MediaType media data:", data);
+
+        const data = await response.json();
         setMedia(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error(`Error fetching ${mediaType}:`, error);
-      });
+      }
+    }
+
+    fetchMediaData();
   }, [mediaId, mediaType]);
-  console.error(media);
 
   if (!media) return <div>Loading...</div>;
 
-  return (
-    <div>
-      <MediaView media={media} mediaType={mediaType} />
-    </div>
-  );
+  return <MediaView media={media} mediaType={mediaType} />;
 }
 
 export default MediaType;

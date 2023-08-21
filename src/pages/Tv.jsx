@@ -2,25 +2,30 @@ import MediaType from "../components/MediaType";
 import tvShows from "../components/tvShows.json";
 
 const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
+  let shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
-  return array;
+  return shuffledArray;
 };
 
+const TvShowItem = ({ id }) => (
+  <div className="py-2">
+    <div className="rounded-xl bg-slate-400 hover:cursor-pointer px-2 py-2 hover:bg-slate-300">
+      <MediaType mediaId={id} mediaType="tv" />
+    </div>
+  </div>
+);
+
 const Tv = () => {
-  const tvData = shuffleArray([...tvShows]);
+  const tvData = shuffleArray(tvShows);
 
   return (
     <div className="p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {tvData.map((showId, i) => (
-          <div className="py-2" key={i}>
-            <div className="rounded-xl bg-slate-400 hover:cursor-pointer px-2 py-2 hover:bg-slate-300">
-              <MediaType key={showId} mediaId={showId} mediaType="tv" />
-            </div>
-          </div>
+          <TvShowItem key={i} id={showId} />
         ))}
       </div>
     </div>
