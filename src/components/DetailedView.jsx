@@ -96,7 +96,7 @@ const MediaImage = ({ media }) => (
 );
 
 const VideoAndDetails = ({ media, videoKey }) => (
-  <div className="w-full lg:w-[1300px]">
+  <div className="w-full lg:w-1/2">
     <VideoFrame videoKey={videoKey} />
     <GenresAndRatings media={media} />
     <div className="lg:hidden mt-4">
