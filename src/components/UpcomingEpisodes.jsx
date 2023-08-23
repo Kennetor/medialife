@@ -23,12 +23,12 @@ const UpcomingEpisodes = () => {
     setShows(allShowsWithUpcomingEpisodes.filter((show) => show.nextEpisode));
   };
 
-  const fiveDaysFromNow = new Date();
-  fiveDaysFromNow.setDate(fiveDaysFromNow.getDate() + 5);
+  const daysFromNow = new Date();
+  daysFromNow.setDate(daysFromNow.getDate() + 10);
 
   const filteredShows = shows.filter((show) => {
     const episodeDate = new Date(show.nextEpisode.air_date);
-    return episodeDate <= fiveDaysFromNow;
+    return episodeDate <= daysFromNow;
   });
 
   const groupedEpisodes = filteredShows.reduce((acc, show) => {
@@ -46,9 +46,9 @@ const UpcomingEpisodes = () => {
   );
 
   return (
-    <div className="text-white ml-20">
+    <div className="text-white xl:ml-32 mt-16">
       {sortedDates.map((date) => (
-        <div key={date} className="py-2">
+        <div key={date} className="py-2 font-bold xl:ml-20">
           <h2>
             {new Date(date).toLocaleDateString("en-US", {
               year: "numeric",
@@ -57,8 +57,10 @@ const UpcomingEpisodes = () => {
             })}
           </h2>
           {groupedEpisodes[date].map((show) => (
-            <p key={show.nextEpisode.id} className="text-green-300">
-              {show.showName}
+            <p key={show.nextEpisode.id} className="mt-2">
+              <div className="font-bold text-2xl text-green-400 xl:ml-2">
+                - {show.showName}
+              </div>
               {/* {show.nextEpisode.episode_number
                 ? `Episode ${show.nextEpisode.episode_number}`
                 : ""} */}
