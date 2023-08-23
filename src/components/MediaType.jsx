@@ -1,11 +1,15 @@
+// Hooks
 import { useState, useEffect } from "react";
+// Components
 import MediaView from "./MediaView";
 
+// Environment Variables
 const { VITE_DB_API_BASE_URL: url, VITE_DB_API_KEY: apiKey } = import.meta.env;
 
 function MediaType({ mediaId, mediaType }) {
   const [media, setMedia] = useState(null);
 
+  // Data Fetching
   useEffect(() => {
     async function fetchMediaData() {
       try {

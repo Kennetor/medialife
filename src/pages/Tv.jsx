@@ -1,6 +1,9 @@
+// Components
 import MediaType from "../components/MediaType";
+// JSON
 import tvShows from "../components/tvShows.json";
 
+// Fisher-Yates shuffle
 const shuffleArray = (array) => {
   let shuffledArray = [...array];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -10,6 +13,7 @@ const shuffleArray = (array) => {
   return shuffledArray;
 };
 
+// Props for setting correct tv data
 const TvShowItem = ({ id }) => (
   <div className="py-2">
     <div className="rounded-xl bg-slate-400 hover:cursor-pointer px-2 py-2 hover:bg-slate-300">
@@ -18,6 +22,7 @@ const TvShowItem = ({ id }) => (
   </div>
 );
 
+// Shuffles the tvShows array using the Fisher-Yates algorithm
 const Tv = () => {
   const tvData = shuffleArray(tvShows);
 

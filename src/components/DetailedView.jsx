@@ -1,6 +1,9 @@
+// Hooks
 import { useState, useEffect } from "react";
+// Router Hook
 import { useParams } from "react-router-dom";
 
+// Environment Variables
 const {
   VITE_DB_API_BASE_URL: url,
   VITE_DB_API_KEY: apiKey,
@@ -12,17 +15,7 @@ const DetailedView = () => {
   const [media, setMedia] = useState(null);
   const [videoKey, setVideoKey] = useState(null);
 
-  useEffect(() => {
-    fetchMediaDetails();
-  }, [mediaId, mediaType]);
-
-  useEffect(() => {
-    if (media) {
-      fetchVideoDetails();
-      console.log(media);
-    }
-  }, [media]);
-
+  // Data Fetching
   const fetchMediaDetails = async () => {
     fetchData(
       `${url}/${mediaType}/${mediaId}?api_key=${apiKey}`,
@@ -56,6 +49,19 @@ const DetailedView = () => {
     }
   };
 
+  // Effects
+  useEffect(() => {
+    fetchMediaDetails();
+  }, [mediaId, mediaType]);
+
+  useEffect(() => {
+    if (media) {
+      fetchVideoDetails();
+      // console.log(media);
+    }
+  }, [media]);
+
+  // Render
   if (!media) return <div>Loading...</div>;
 
   return (
@@ -67,6 +73,7 @@ const DetailedView = () => {
   );
 };
 
+// Components
 const Header = ({ media }) => (
   <>
     <h1 className="text-3xl xl:text-4xl mb-2 text-center">

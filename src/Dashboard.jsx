@@ -1,5 +1,8 @@
+// Router
 import { useNavigate } from "react-router-dom";
+// Images
 import dashPic from "./images/2.jpg";
+// Components
 import UpcomingEpisodes from "./components/UpcomingEpisodes";
 
 function Dashboard() {
@@ -18,7 +21,7 @@ function Dashboard() {
     </div>
   );
 }
-
+// Props to navigate to route
 const NavigationBox = ({ label, route }) => {
   const navigate = useNavigate();
   return (

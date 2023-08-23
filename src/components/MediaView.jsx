@@ -1,14 +1,18 @@
+// Router
 import { useNavigate } from "react-router-dom";
 
+// Enviroment Variables
 const { VITE_DB_API_IMAGE: img } = import.meta.env;
 
 const MediaView = ({ media, mediaType }) => {
   const navigate = useNavigate();
 
+  // Props to use for data rendering
   const getMediaTitle = () => {
     return mediaType === "movie" ? media.original_title : media.name;
   };
 
+  // React Router
   const handleMediaClick = () => {
     navigate(`/${mediaType}/${media.id}`);
   };
