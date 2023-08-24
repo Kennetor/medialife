@@ -24,7 +24,7 @@ const UpcomingEpisodes = () => {
   };
 
   const daysFromNow = new Date();
-  daysFromNow.setDate(daysFromNow.getDate() + 10);
+  daysFromNow.setDate(daysFromNow.getDate() * 10);
 
   const filteredShows = shows.filter((show) => {
     const episodeDate = new Date(show.nextEpisode.air_date);
@@ -59,11 +59,11 @@ const UpcomingEpisodes = () => {
           {groupedEpisodes[date].map((show) => (
             <p key={show.nextEpisode.id} className="mt-2">
               <div className="font-bold text-2xl text-green-400 xl:ml-2">
-                - {show.showName}
+                - {show.showName} - {"\u00A0"}
+                {show.nextEpisode.episode_number
+                  ? `Episode ${show.nextEpisode.episode_number}`
+                  : ""}
               </div>
-              {/* {show.nextEpisode.episode_number
-                ? `Episode ${show.nextEpisode.episode_number}`
-                : ""} */}
             </p>
           ))}
           {/* <p className="">

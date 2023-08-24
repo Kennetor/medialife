@@ -9,7 +9,7 @@ function Dashboard() {
   return (
     <div
       style={{ backgroundImage: `url(${dashPic})` }}
-      className="w-full h-screen bg-cover bg-center flex items-center justify-center "
+      className="w-full xl:h-screen bg-cover bg-center flex items-center justify-center"
     >
       <div className="flex flex-col items-center mb-20">
         <div className="flex items-center space-x-4 xl:space-x-60 mb-2">
@@ -26,7 +26,7 @@ const NavigationBox = ({ label, route }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="w-[11rem] xl:w-[18rem] h-[5rem] rounded-full bg-[#424B54] text-3xl font-bold text-white xl:text-3xl hover:bg-slate-400 flex items-center justify-center hover:cursor-pointer"
+      className="w-[11rem] xl:w-[18rem] h-[5rem] mt-20 rounded-full bg-[#424B54] text-3xl font-bold text-white xl:text-3xl hover:bg-slate-400 flex items-center justify-center hover:cursor-pointer"
       onClick={() => navigate(route)}
     >
       {label}
