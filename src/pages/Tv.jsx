@@ -4,14 +4,14 @@ import MediaType from "../components/MediaType";
 import tvShows from "../components/tvShows.json";
 
 // Fisher-Yates shuffle
-const shuffleArray = (array) => {
-  let shuffledArray = [...array];
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-  return shuffledArray;
-};
+// const shuffleArray = (array) => {
+//   let shuffledArray = [...array];
+//   for (let i = shuffledArray.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+//   }
+//   return shuffledArray;
+// };
 
 // Props for setting correct tv data
 const TvShowItem = ({ id }) => (
@@ -24,12 +24,12 @@ const TvShowItem = ({ id }) => (
 
 // Shuffles the tvShows array using the Fisher-Yates algorithm
 const Tv = () => {
-  const tvData = shuffleArray(tvShows);
+  // const tvData = shuffleArray(tvShows);
 
   return (
     <div className="p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tvData.map((showId, i) => (
+        {tvShows.map((showId, i) => (
           <TvShowItem key={i} id={showId} />
         ))}
       </div>
