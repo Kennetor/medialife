@@ -59,7 +59,7 @@ const UpcomingEpisodes = () => {
           {groupedEpisodes[date].map((show) => (
             <p key={show.nextEpisode.id} className="mt-2">
               <div className="font-bold text-2xl text-green-400 xl:ml-2">
-                - {show.showName} - {"\u00A0"}
+                - {show.showName} -{"\u00A0"}
                 {show.nextEpisode.episode_number
                   ? `Episode ${show.nextEpisode.episode_number}`
                   : ""}
