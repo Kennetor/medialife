@@ -57,7 +57,7 @@ const DetailedView = () => {
   useEffect(() => {
     if (media) {
       fetchVideoDetails();
-      // console.log(media);
+      console.log(media);
     }
   }, [media]);
 

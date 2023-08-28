@@ -20,15 +20,55 @@ const MediaView = ({ media, mediaType }) => {
   return (
     <div className="flex items-center" onClick={handleMediaClick}>
       <img
-        src={`${img}/w200${media.poster_path}`}
+        src={`${img}/w154${media.poster_path}`}
         alt={getMediaTitle()}
-        className="mr-4 rounded-lg"
+        className="mr-2 rounded-lg"
       />
       <div>
-        <p className="text-2xl xl:text-3xl">{getMediaTitle()}</p>
+        <p className="text-2xl lg:text-2xl">{getMediaTitle()}</p>
       </div>
+      {/* <p>{media.overview}</p> */}
     </div>
   );
 };
 
 export default MediaView;
+
+/* 
+"backdrop_sizes": [
+  "w300",
+  "w780",
+  "w1280",
+  "original"
+],
+"logo_sizes": [
+  "w45",
+  "w92",
+  "w154",
+  "w185",
+  "w300",
+  "w500",
+  "original"
+],
+"poster_sizes": [
+  "w92",
+  "w154",
+  "w185",
+  "w342",
+  "w500",
+  "w780",
+  "original"
+],
+"profile_sizes": [
+  "w45",
+  "w185",
+  "h632",
+  "original"
+],
+"still_sizes": [
+  "w92",
+  "w185",
+  "w300",
+  "original"
+]
+*/
