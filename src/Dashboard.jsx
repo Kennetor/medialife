@@ -9,7 +9,7 @@ function Dashboard() {
   return (
     <div
       style={{ backgroundImage: `url(${dashPic})` }}
-      className="w-full xl:h-screen bg-cover bg-center flex items-center justify-center"
+      className="w-full h-screen bg-cover bg-center flex items-center justify-center"
     >
       <div className="flex flex-col items-center mb-20">
         <div className="flex items-center space-x-4 xl:space-x-60 mb-2">
