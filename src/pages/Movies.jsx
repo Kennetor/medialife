@@ -16,7 +16,7 @@ const shuffleArray = (array) => {
 // Props for setting correct movie data
 const MovieItem = ({ id }) => (
   <div className="py-2 flex-grow min-w-min max-w-full">
-    <div className="rounded-xl bg-slate-400 cursor-pointer px-2 py-2 hover:bg-slate-300">
+    <div className="rounded-lg bg-slate-700 cursor-pointer px-2 py-2 hover:bg-slate-600">
       <MediaType mediaId={id} mediaType="movie" />
     </div>
   </div>
@@ -27,7 +27,7 @@ const Movies = () => {
   const moviesData = shuffleArray(movies);
 
   return (
-    <div className="p-2">
+    <div className="p-2 text-[#E1D9D1] font-serif font-bold">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {moviesData.map((showId, i) => (
           <MovieItem key={i} id={showId} />

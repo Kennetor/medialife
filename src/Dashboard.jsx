@@ -26,7 +26,7 @@ const NavigationBox = ({ label, route }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="w-[11rem] xl:w-[18rem] h-[5rem] mt-20 rounded-full bg-[#424B54] text-3xl font-bold text-white xl:text-3xl hover:bg-slate-400 flex items-center justify-center hover:cursor-pointer"
+      className="w-[11rem] xl:w-[18rem] h-[5rem] mt-20 border-2 border-green-400 bg-[#424B54] text-3xl font-bold text-white xl:text-3xl hover:bg-slate-500 flex items-center justify-center hover:cursor-pointer"
       onClick={() => navigate(route)}
     >
       {label}
