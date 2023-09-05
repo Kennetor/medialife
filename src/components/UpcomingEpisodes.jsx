@@ -69,7 +69,7 @@ const UpcomingEpisodes = () => {
           {groupedEpisodes[date].map((show) => (
             <div key={show.nextEpisode.id} className="mt-2">
               <div
-                className="font-bold text-2xl text-green-400 xl:ml-2"
+                className="font-bold text-2xl text-green-400 xl:ml-2 hover:cursor-pointer"
                 onClick={() => handleShowClick(show.id)}
               >
                 - {show.showName} -{"\u00A0"}
