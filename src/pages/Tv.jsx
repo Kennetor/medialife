@@ -27,7 +27,7 @@ const Tv = () => {
   const tvData = shuffleArray(tvShows);
 
   return (
-    <div className="p-2 text-[#E1D9D1] font-serif font-bold">
+    <div className="p-2">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {tvData.map((showId, i) => (
           <TvShowItem key={i} id={showId} />

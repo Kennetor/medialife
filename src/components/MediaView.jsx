@@ -18,16 +18,16 @@ const MediaView = ({ media, mediaType }) => {
   };
 
   return (
-    <div className="flex items-center" onClick={handleMediaClick}>
+    <div className="flex xl:break-normal break-all" onClick={handleMediaClick}>
       <img
         src={`${img}/w154${media.poster_path}`}
         alt={getMediaTitle()}
         className="mr-2 rounded-lg"
       />
-      <div>
-        <p className="text-2xl lg:text-2xl">{getMediaTitle()}</p>
+      <div className="m-auto text-center">
+        <p className="lg:text-xl text-2xl text-white">{getMediaTitle()}</p>
+        <p className="text-sm font-sans mt-2 text-gray-300">{media.tagline}</p>
       </div>
-      {/* <p>{media.overview}</p> */}
     </div>
   );
 };
