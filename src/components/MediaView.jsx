@@ -18,7 +18,10 @@ const MediaView = ({ media, mediaType }) => {
   };
 
   return (
-    <div className="flex xl:break-normal break-all" onClick={handleMediaClick}>
+    <div
+      className="flex xl:break-normal lg:break-all"
+      onClick={handleMediaClick}
+    >
       <img
         src={`${img}/w154${media.poster_path}`}
         alt={getMediaTitle()}
