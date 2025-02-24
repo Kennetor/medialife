@@ -1,6 +1,4 @@
-// Hooks
 import { useState, useEffect } from "react";
-// Components
 import MediaView from "./MediaView";
 
 // Environment Variables
@@ -8,10 +6,15 @@ const { VITE_DB_API_BASE_URL: url, VITE_DB_API_KEY: apiKey } = import.meta.env;
 
 function MediaType({ mediaId, mediaType }) {
   const [media, setMedia] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Data Fetching
+  // Fetch media details
   useEffect(() => {
-    async function fetchMediaData() {
+    const fetchMediaData = async () => {
+      setIsLoading(true);
+      setError(null);
+
       try {
         const response = await fetch(
           `${url}/${mediaType}/${mediaId}?api_key=${apiKey}`
@@ -27,13 +30,17 @@ function MediaType({ mediaId, mediaType }) {
         setMedia(data);
       } catch (error) {
         console.error(`Error fetching ${mediaType}:`, error);
+        setError(error);
+      } finally {
+        setIsLoading(false);
       }
-    }
+    };
 
     fetchMediaData();
-  }, [mediaId, mediaType]);
+  }, [mediaId, mediaType, url, apiKey]);
 
-  if (!media) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return <MediaView media={media} mediaType={mediaType} />;
 }
